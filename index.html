@@ -40,59 +40,76 @@
 
 		<section class="pictures-catalog" id="porfolio">
 			
-			<div class="container">
-				<h2 class="visually-hidden">My Projects</h2>
-			
-				<div class="my-pics-wrapper">
-					<div class="my-pics-row first-row">
-						<div class="hexagon">
-							<img src="img/catalog/hex1.png" width="180" height="206" alt="">
+				
+				<div class="container">
+					<h2 class="visually-hidden">My Projects</h2>
+				
+					<div class="my-pics-wrapper">
+						<div class="my-pics-row first-row">
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex1.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex2.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex3.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex4.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
 						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex2.png" width="180" height="206" alt="">
+						<div class="my-pics-row second-row">
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex5.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex6.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex7.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex8.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex9.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
 						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex3.png" width="180" height="206" alt="">
+						<div class="my-pics-row third-row">
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex10.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex11.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex12.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>
+							<div class="hexagon-wrapper">
+								<img src="img/catalog/hex13.png" width="180" height="206" alt="">
+								<div class="hexagon"></div>
+							</div>	
 						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex4.png" width="180" height="206" alt="">
-						</div>
-					</div>
-					<div class="my-pics-row second-row">
-						<div class="hexagon">
-							<img src="img/catalog/hex5.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex6.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex7.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex8.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex9.png" width="180" height="206" alt="">
-						</div>
-					</div>
-					<div class="my-pics-row third-row">
-						<div class="hexagon">
-							<img src="img/catalog/hex10.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex11.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex12.png" width="180" height="206" alt="">
-						</div>
-						<div class="hexagon">
-							<img src="img/catalog/hex13.png" width="180" height="206" alt="">
-						</div>	
 					</div>
 				</div>
-			</div>
-			
 
+				<!-- Модалка с картинкой -->
+				<section class="modal">
+					<img src="img/catalog/pic1.png" alt="" width="500" height="500">
+				</section>
 
 		</section>
 
@@ -180,7 +197,7 @@
 	</footer>
 
 	<!-- стрелка наверх -->
-	<a class="back_to_top fa fa-long-arrow-up" aria-hidden="true" title="Наверх"></a>
+	<a class="back_to_top" title="Наверх"><i class="fa fa-long-arrow-up" aria-hidden="true" ></i></a>
 
 	<script>
 
@@ -191,6 +208,14 @@
 		var about_me = document.querySelector('.about-me');			  // y
 		var git = document.querySelector('.get-in-touch');            // z
 
+		var modal = document.querySelector('.modal');
+		var hexagon = document.querySelector('.hexagon');
+
+		hexagon.addEventListener("click", function(event) {
+			event.preventDefault();
+			modal.classList.add('modal-show');
+		});
+
 		window.onbeforeunload = function () {
     		window.scrollTo(0,0);
 		};
@@ -200,6 +225,8 @@
 				x.classList.add('fullscr');
 				y.classList.remove('fullscr');
 				z.classList.remove('fullscr');
+
+			goTopBtn.classList.remove('back_to_top-show')
 			});
 		};
 
@@ -215,22 +242,12 @@
 			catalog.classList.remove('fullscr');
 			about_me.classList.remove('fullscr');
 			git.classList.remove('fullscr');
+
+			goTopBtn.classList.remove('back_to_top-show')
 		});
 
 
 		// ДЛЯ КНОПКИ НАВЕРХ
-		function trackScroll() {
-		    var scrolled = window.pageYOffset;
-		    var coords = document.documentElement.clientHeight;
-
-		    if (scrolled > coords) {
-		      goTopBtn.classList.add('back_to_top-show');
-		    }
-		    if (scrolled < coords) {
-		      goTopBtn.classList.remove('back_to_top-show');
-		    }
-		  }
-
 		function backToTop() {
 		    if (window.pageYOffset > 0) {
 		      window.scrollBy(0, -80);
@@ -240,7 +257,10 @@
 
 		var goTopBtn = document.querySelector('.back_to_top');
 
-		window.addEventListener('wheel', trackScroll);
+		window.addEventListener("mousemove", function() {
+			goTopBtn.classList.add('back_to_top-show');
+		});
+
 		goTopBtn.addEventListener('click', function() {
 			backToTop();
 			catalog.classList.add('fullscr');

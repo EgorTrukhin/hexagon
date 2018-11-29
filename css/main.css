@@ -84,7 +84,7 @@ ul {
 @keyframes scaleCat {
 	0% 		{ padding: 90px 0 90px;
 		  	  min-height: 600px; }
-	100% 	{ padding: 120px 0 90px; 
+	100% 	{ padding: 180px 0 90px; 
 			  min-height: 100vh;}
 }
 /***************************************************************************************/
@@ -158,9 +158,11 @@ ul {
 /* Main Content */
 
 .pictures-catalog {
-	background: #fff;
+	background: url('../img/image.png') no-repeat;
+	background-size: 100% 100%;
 	padding: 120px 0;
 }
+
 
 .my-pics-wrapper {
 	display: flex;
@@ -195,123 +197,47 @@ ul {
 	margin-top: -52px;
 }
 
-/*.hexagon {
-	display: block;
-  	position: relative;
-  	width: 180px; 
-  	height: 103.92px;
-  	margin: 51.96px 0;
-  	background-size: auto 207.8461px;
-  	background-position: center;
+.hexagon {
+	position: relative;
+	width: 180px; 
+	height: 103.92px;
+	background-color: transparent;
+	margin: -162px 0 51.96px;
 }
 
-.hexagon-top,
-.hexagon-bottom {
-	position: absolute;
-	z-index: 1;
-	width: 127.28px;
-	height: 127.28px;
-	overflow: hidden;
-	-webkit-transform: scaleY(0.5774) rotate(-45deg);
-	-ms-transform: scaleY(0.5774) rotate(-45deg);
-	transform: scaleY(0.5774) rotate(-45deg);
-	background: inherit;
-	left: 26.36px;
-}
-
-.hexagon-top::after,
-.hexagon-bottom::after {
+.hexagon::before,
+.hexagon::after {
 	content: "";
-	position: absolute;
-	width: 180.0000px;
-	height: 103.92304845413264px;
-	-webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-51.9615px);
-	-ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-51.9615px);
-	transform:          rotate(45deg) scaleY(1.7321) translateY(-51.9615px);
-	-webkit-transform-origin: 0 0;
-	-ms-transform-origin: 0 0;
-	transform-origin: 0 0;
-	background: inherit;
+ 	position: absolute;
+	width: 0;
+	border-left: 90px solid transparent;
+	border-right: 90px solid transparent;
 }
 
-.hexagon-top {
-	top: -63.6396px;
-}
-
-.hexagon-top::after {
-	background-position: center top;
-}
-
-.hexagon-bottom {
-	bottom: -63.6396px;
-}
-
-.hexagon-bottom::after {
-	background-position: center bottom;
+.hexagon::before {
+	bottom: 100%;
+	border-bottom: 51.96px solid transparent;
 }
 
 .hexagon::after {
- 	content: '';
-	position: absolute;
-	top: 0.0000px;
-	left: 0;
-	width: 180.0000px;
-	height: 103.9230px;
-	z-index: 2;
-	background: inherit;
+	top: 100%;
+	width: 0;
+	border-top: 51.96px solid transparent;
+
 }
 
-.hexagon-bg-pic1 {
-	background-image: url('../img/catalog/pic1.png');
+.hexagon:hover {
+    background: rgba(0,0,0,0.4);
+    cursor: pointer;
 }
 
-.hexagon-bg-pic2 {
-	background-image: url('../img/catalog/pic2.png');
+.hexagon:hover::before {
+    border-bottom-color: rgba(0,0,0,0.4);
 }
 
-.hexagon-bg-pic3 {
-	background-image: url('../img/catalog/pic3.png');
+.hexagon:hover::after {
+    border-top-color: rgba(0,0,0,0.4);
 }
-
-.hexagon-bg-pic4 {
-	background-image: url('../img/catalog/pic4.png');
-}
-
-.hexagon-bg-pic5 {
-	background-image: url('../img/catalog/pic5.png');
-}
-
-.hexagon-bg-pic6 {
-	background-image: url('../img/catalog/pic6.png');
-}
-
-.hexagon-bg-pic7 {
-	background-image: url('../img/catalog/pic7.png');
-}
-
-.hexagon-bg-pic8 {
-	background-image: url('../img/catalog/pic8.png');
-}
-
-.hexagon-bg-pic9 {
-	background-image: url('../img/catalog/pic9.png');
-}
-
-.hexagon-bg-pic10 {
-	background-image: url('../img/catalog/pic10.png');
-}
-
-.hexagon-bg-pic11 {
-	background-image: url('../img/catalog/pic11.png');
-}
-
-.hexagon-bg-pic12 {
-	background-image: url('../img/catalog/pic12.png');
-}
-
-.hexagon-bg-pic13 {
-	background-image: url('../img/catalog/pic13.png');
-}*/
 
 .about-me,
 .get-in-touch {
@@ -464,6 +390,25 @@ ul {
 /***************************************************************************************/
 /***************************************************************************************/
 
+/* модалка */
+
+.modal {
+	position: fixed;
+	
+	top: 150px;
+	left: 50%;
+	margin-left: -260px;
+	padding: 10px;
+
+	background: #fff;
+
+	display: none;
+}
+
+.modal-show {
+	display: block;
+}
+
 /* псевдо линии для секция */
 
 .get-in-touch .container::after,
@@ -523,7 +468,7 @@ ul {
 }
 
 .pictures-catalog .container::after {
-	bottom: -100px;
+	bottom: -80px;
 }
 
 /* ТУПА ДЛЯ СКРИПТОФ */
@@ -533,21 +478,15 @@ ul {
     right: 50px;
     z-index: 9999;
     width: 30px;
-	height: 25px;
-	padding-top: 5px;
-	background: #2eb398;
-	color: #fff;
+	height: 30px;
+	background: #454545;
+	color: #2eb398;
 	cursor: pointer;
 	border-radius: 2px;
 	display: none;
 
 	text-align: center;
-	font-size: 100px;
-}
-
-.back_to_top:hover {
- 	background: #454545;
-	color: #2eb398;
+	font-size: 15px;
 }
 
 .back_to_top-show {
@@ -556,7 +495,7 @@ ul {
 
 .fullscr {
 	min-height: 100vh;
-	padding: 120px 0 90px;
+	padding: 180px 0 90px;
 	
 	animation-name: scaleCat;
 	animation-duration: 1s;
