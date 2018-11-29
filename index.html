@@ -46,60 +46,47 @@
 				<div class="my-pics-wrapper">
 					<div class="my-pics-row first-row">
 						<div class="hexagon hexagon-bg-pic1">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex1.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic2">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex2.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic3">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex3.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic4">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex4.png" width="180" height="206" alt="">
 						</div>
 					</div>
 					<div class="my-pics-row second-row">
 						<div class="hexagon hexagon-bg-pic5">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex5.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic6">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex6.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic7">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex7.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic8">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex8.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic9">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex9.png" width="180" height="206" alt="">
 						</div>
 					</div>
 					<div class="my-pics-row third-row">
 						<div class="hexagon hexagon-bg-pic10">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex10.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic11">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex11.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic12">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex12.png" width="180" height="206" alt="">
 						</div>
 						<div class="hexagon hexagon-bg-pic13">
-							<div class="hexagon-top"></div>
-							<div class="hexagon-bottom"></div>
+							<img src="img/catalog/hex13.png" width="180" height="206" alt="">
 						</div>	
 					</div>
 				</div>
@@ -113,10 +100,7 @@
 			<div class="container">
 				<h2 class="visually-hidden">About Me</h2>
 			
-				<div class="hexagon hexagon-my-face my-photo">
-					<div class="hexagon-top"></div>
-					<div class="hexagon-bottom"></div>
-				</div>
+				<img class="my-photo" src="img/my-face.png" alt="my photo" width="180" height="206">
 				<div class="my-info">
 					<h3 class="my-name">Smith Anderson</h3>
 					<h4 class="my-job">Illustrator & Character Designer</h4>
@@ -195,41 +179,37 @@
 		<p class="copyright">© Copyright 2013 by PSDchat</p>
 	</footer>
 
+	<!-- стрелка наверх -->
+	<a class="back_to_top fa fa-long-arrow-up" aria-hidden="true" title="Наверх"></a>
+
 	<script>
 
-		var top = document.getElementsByTagName('body');		
-		var link = document.querySelector('.portfolio-link');
-		var about_me_link = document.querySelector('.about-me-link');
-		var git_link = document.querySelector('.git-link');
-		var catalog = document.querySelector('.pictures-catalog');
-		var about_me = document.querySelector('.about-me');
-		var git = document.querySelector('.get-in-touch');
+		var link = document.querySelector('.portfolio-link');         // a
+		var about_me_link = document.querySelector('.about-me-link'); // a
+		var git_link = document.querySelector('.git-link');           // a
+		var catalog = document.querySelector('.pictures-catalog');    // x
+		var about_me = document.querySelector('.about-me');			  // y
+		var git = document.querySelector('.get-in-touch');            // z
 
 		window.onbeforeunload = function () {
     		window.scrollTo(0,0);
 		};
 
+		function bla_bla(a,x,y,z) {
+			a.addEventListener("click", function() {
+				x.classList.add('fullscr');
+				y.classList.remove('fullscr');
+				z.classList.remove('fullscr');
+			});
+		};
+
+		bla_bla(link,catalog,about_me,git);
+		bla_bla(about_me_link,about_me,catalog,git);
+		bla_bla(git_link,git,catalog,about_me);
+
 		window.addEventListener('DOMContentLoaded', function() {
 			catalog.classList.add('fullscr');
 		});
-
-		link.addEventListener("click", function() {
-			catalog.classList.add('fullscr');
-			about_me.classList.remove('fullscr');
-			git.classList.remove('fullscr');
-		});
-
-		about_me_link.addEventListener('click', function() {
-			about_me.classList.add('fullscr');
-			catalog.classList.remove('fullscr');
-			git.classList.remove('fullscr');
-		})
-
-		git_link.addEventListener('click', function() {
-			git.classList.add('fullscr');
-			catalog.classList.remove('fullscr');
-			about_me.classList.remove('fullscr');
-		})
 
 		window.addEventListener("wheel", function() {
 			catalog.classList.remove('fullscr');
@@ -237,6 +217,35 @@
 			git.classList.remove('fullscr');
 		});
 
+
+		// ДЛЯ КНОПКИ НАВЕРХ
+		function trackScroll() {
+		    var scrolled = window.pageYOffset;
+		    var coords = document.documentElement.clientHeight;
+
+		    if (scrolled > coords) {
+		      goTopBtn.classList.add('back_to_top-show');
+		    }
+		    if (scrolled < coords) {
+		      goTopBtn.classList.remove('back_to_top-show');
+		    }
+		  }
+
+		function backToTop() {
+		    if (window.pageYOffset > 0) {
+		      window.scrollBy(0, -80);
+		      setTimeout(backToTop, 0);
+		    }
+		  }
+
+		var goTopBtn = document.querySelector('.back_to_top');
+
+		window.addEventListener('wheel', trackScroll);
+		goTopBtn.addEventListener('click', function() {
+			backToTop();
+			catalog.classList.add('fullscr');
+		});
+		
 	</script>
 </body>
 </html>
