@@ -215,14 +215,20 @@
 
 		link.addEventListener("click", function() {
 			catalog.classList.add('fullscr');
+			about_me.classList.remove('fullscr');
+			git.classList.remove('fullscr');
 		});
 
 		about_me_link.addEventListener('click', function() {
 			about_me.classList.add('fullscr');
+			catalog.classList.remove('fullscr');
+			git.classList.remove('fullscr');
 		})
 
 		git_link.addEventListener('click', function() {
 			git.classList.add('fullscr');
+			catalog.classList.remove('fullscr');
+			about_me.classList.remove('fullscr');
 		})
 
 		window.addEventListener("wheel", function() {
