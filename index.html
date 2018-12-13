@@ -204,29 +204,42 @@
 
 	<script>
 
-		var link = document.querySelector('.portfolio-link');         // a
-		var about_me_link = document.querySelector('.about-me-link'); // a
-		var git_link = document.querySelector('.git-link');           // a
-		var catalog = document.querySelector('.pictures-catalog');    // x
-		var about_me = document.querySelector('.about-me');			  // y
-		var git = document.querySelector('.get-in-touch');            // z
+		var link 			= document.querySelector('.portfolio-link');        // a
+		var about_me_link 	= document.querySelector('.about-me-link'); 		// a
+		var git_link 		= document.querySelector('.git-link');           	// a
+		var catalog 		= document.querySelector('.pictures-catalog');    	// x
+		var about_me 		= document.querySelector('.about-me');			  	// y
+		var git 			= document.querySelector('.get-in-touch');          // z
 
-		var modal = document.querySelector('.modal');
-		var hexagon = document.querySelector('.hexagon');
-		var overlay = document.querySelector('.modal-overlay');
-		var	close = document.querySelector('.modal-close');
+		var modal 			= document.querySelector('.modal');
+		var hexagon 		= document.querySelectorAll('.hexagon');
+		var overlay 		= document.querySelector('.modal-overlay');
+		var	close 			= document.querySelector('.modal-close');
 
-		hexagon.addEventListener("click", function(event) {
-			event.preventDefault();
-			modal.classList.add('modal-show');
-			overlay.classList.add('modal-show');
-		});
+		
 
+		// modal
+		
+		for (var i = 0; i < hexagon.length; i++) {
+			
+			var hex = hexagon[i];
+			
+			hex.addEventListener("click", function(event) {
+				
+				event.preventDefault();
+				modal.classList.add('modal-show');
+				overlay.classList.add('modal-show');
+			});
+		}
+		
 		close.addEventListener("click", function(event) {
 			event.preventDefault();
 			modal.classList.remove('modal-show');
 			overlay.classList.remove('modal-show');
 		});
+
+		
+		// fullscreen
 
 		window.onbeforeunload = function () {
     		window.scrollTo(0,0);
