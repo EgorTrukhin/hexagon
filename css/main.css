@@ -166,6 +166,7 @@ ul {
  }
 
 .nav-menu-item a {
+	text-transform: uppercase;
 	padding: 30px 15px 20px;
 	display: block;
 }
@@ -292,6 +293,10 @@ ul {
 
 .my-job {
 	color: #20816d;
+}
+
+.some-words-about {
+	margin-bottom: 40px;
 }
 
 .social-media {
