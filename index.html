@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hexagon</title>
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/min.main.css">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet">
@@ -48,59 +48,59 @@
 						<div class="my-pics-row first-row">
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex1.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(0)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex2.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(1)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex3.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(2)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex4.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(3)"></div>
 							</div>
 						</div>
 						<div class="my-pics-row second-row">
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex5.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(4)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex6.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(5)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex7.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(6)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex8.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(7)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex9.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(8)"></div>
 							</div>
 						</div>
 						<div class="my-pics-row third-row">
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex10.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(9)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex11.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(10)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex12.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(11)"></div>
 							</div>
 							<div class="hexagon-wrapper">
 								<img src="img/catalog/hex13.png" width="180" height="206" alt="">
-								<div class="hexagon"></div>
+								<div class="hexagon" onclick="on_click(12)"></div>
 							</div>	
 						</div>
 					</div>
@@ -108,8 +108,6 @@
 
 				<!-- Модалка с картинкой -->
 				<section class="modal" id="modal-pic">
-					<!-- <img src="img/catalog/pic1.png" alt="" width="500" height="500"> -->
-
 					<button class="modal-close" type="button"><span class="visually-hidden">Закрыть</span></button>
 				</section>
 				<div class="modal-overlay"></div>
@@ -204,14 +202,6 @@
 
 	<script>
 
-		var link 			= document.querySelector('.portfolio-link');        // a
-		var about_me_link 	= document.querySelector('.about-me-link'); 		// a
-		var git_link 		= document.querySelector('.git-link');           	// a
-		var catalog 		= document.querySelector('.pictures-catalog');    	// x
-		var about_me 		= document.querySelector('.about-me');			  	// y
-		var git 			= document.querySelector('.get-in-touch');          // z
-
-		
 		// modal
 		var hexagon 		= document.querySelectorAll('.hexagon');
 
@@ -239,35 +229,37 @@
 
 			modals.push(new Modal(hexagon[i],pic,img));
 		};
-		
-		console.log(modals);
-		
-		for (var i = 0; i < modals.length; i++) {
-			var mp 			= modals[i].hex;
-			var picture 	= modals[i].img;
-			
-			mp.addEventListener("click", function(event) {
 
-				modal_pic.appendChild(picture);
+		function on_click(x) {
+			var picture = modals[x].img;
+
+			event.preventDefault();
+
+			modal_pic.appendChild(picture);
 		
+			modal.classList.add('modal-show');
+			overlay.classList.add('modal-show');
+
+			close.addEventListener("click", function(event) {
 				event.preventDefault();
-				modal.classList.add('modal-show');
-				overlay.classList.add('modal-show');
-			});
+				modal.classList.remove('modal-show');
+				overlay.classList.remove('modal-show');
+
+				picture.remove();
+			});			
 		};
 
-		
-			
-		close.addEventListener("click", function(event) {
-			event.preventDefault();
-			modal.classList.remove('modal-show');
-			overlay.classList.remove('modal-show');
 
-			picture.remove();
-		});
 
-		
 		// fullscreen
+
+		var link 			= document.querySelector('.portfolio-link');        // a
+		var about_me_link 	= document.querySelector('.about-me-link'); 		// a
+		var git_link 		= document.querySelector('.git-link');           	// a
+		var catalog 		= document.querySelector('.pictures-catalog');    	// x
+		var about_me 		= document.querySelector('.about-me');			  	// y
+		var git 			= document.querySelector('.get-in-touch');          // z
+
 
 		window.onbeforeunload = function () {
     		window.scrollTo(0,0);
@@ -305,8 +297,8 @@
 		    if (window.pageYOffset > 0) {
 		      window.scrollBy(0, -80);
 		      setTimeout(backToTop, 0);
-		    }
-		  }
+		    };
+		};
 
 		var goTopBtn = document.querySelector('.back_to_top');
 
