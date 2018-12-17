@@ -107,8 +107,8 @@
 				</div>
 
 				<!-- Модалка с картинкой -->
-				<section class="modal">
-					<img src="img/catalog/pic1.png" alt="" width="500" height="500">
+				<section class="modal" id="modal-pic">
+					<!-- <img src="img/catalog/pic1.png" alt="" width="500" height="500"> -->
 
 					<button class="modal-close" type="button"><span class="visually-hidden">Закрыть</span></button>
 				</section>
@@ -211,31 +211,59 @@
 		var about_me 		= document.querySelector('.about-me');			  	// y
 		var git 			= document.querySelector('.get-in-touch');          // z
 
-		var modal 			= document.querySelector('.modal');
+		
+		// modal
 		var hexagon 		= document.querySelectorAll('.hexagon');
+
+		var modal 			= document.querySelector('.modal');
 		var overlay 		= document.querySelector('.modal-overlay');
 		var	close 			= document.querySelector('.modal-close');
 
-		
+		var modal_pic 		= document.getElementById('modal-pic');
+		var modals 			= [];
 
-		// modal
-		
+		function Modal(hex, pic,img) {
+			this.hex = hex;
+			this.pic = pic;
+			this.img = img;
+
+			this.img.setAttribute("src", this.pic);
+			this.img.setAttribute("height", "500");
+			this.img.setAttribute("width", "500");
+			this.img.setAttribute("alt", "modal picture");
+		};
+
 		for (var i = 0; i < hexagon.length; i++) {
+			var pic = "img/catalog/pic" + i + ".png";
+			var img = document.createElement("img");
+
+			modals.push(new Modal(hexagon[i],pic,img));
+		};
+		
+		console.log(modals);
+		
+		for (var i = 0; i < modals.length; i++) {
+			var mp 			= modals[i].hex;
+			var picture 	= modals[i].img;
 			
-			var hex = hexagon[i];
-			
-			hex.addEventListener("click", function(event) {
-				
+			mp.addEventListener("click", function(event) {
+
+				modal_pic.appendChild(picture);
+		
 				event.preventDefault();
 				modal.classList.add('modal-show');
 				overlay.classList.add('modal-show');
 			});
-		}
+		};
+
 		
+			
 		close.addEventListener("click", function(event) {
 			event.preventDefault();
 			modal.classList.remove('modal-show');
 			overlay.classList.remove('modal-show');
+
+			picture.remove();
 		});
 
 		
@@ -251,7 +279,7 @@
 				y.classList.remove('fullscr');
 				z.classList.remove('fullscr');
 
-			goTopBtn.classList.remove('back_to_top-show')
+				goTopBtn.classList.remove('back_to_top-show')
 			});
 		};
 
